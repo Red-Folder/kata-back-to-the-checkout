@@ -43,4 +43,10 @@ describe("Checkout will return", () => {
         checkout.scan("A");
         expect(checkout.total()).toBe(115);
     })
+    it("100 for 'AA'", () => {
+        const checkout = new Checkout(pricingRules);
+        checkout.scan("A");
+        checkout.scan("A");
+        expect(checkout.total()).toBe(100);
+    })
 })
