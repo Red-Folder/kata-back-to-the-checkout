@@ -1,15 +1,16 @@
+import pricerFactory from "./pricerFactory";
+
 class Checkout {
     constructor(pricingRules) {
-        this.pricingRules = pricingRules;
-        this.runningTotal = 0;
+        this.pricingRules = pricerFactory(pricingRules);
     }
 
     scan(item) {
-        this.runningTotal += this.pricingRules.find(x => x.item === item).unitPrice;
+        this.pricingRules.find(x => x.item === item).increment();
     }
 
     total() {
-        return this.runningTotal;
+        return this.pricingRules.map(x => x.total()).reduce((acc, x) => acc += x );
     }
 }
 

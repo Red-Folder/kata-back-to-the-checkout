@@ -3,7 +3,11 @@ import Checkout from "./checkout";
 const pricingRules = [
     { 
         item: "A",
-        unitPrice: 50
+        unitPrice: 50,
+        special: {
+            quantity: 3,
+            specialPrice: 130
+        }
     },
     {
         item: "B",
@@ -48,5 +52,13 @@ describe("Checkout will return", () => {
         checkout.scan("A");
         checkout.scan("A");
         expect(checkout.total()).toBe(100);
+    })
+
+    it("130 for 'AAA'", () => {
+        const checkout = new Checkout(pricingRules);
+        checkout.scan("A");
+        checkout.scan("A");
+        checkout.scan("A");
+        expect(checkout.total()).toBe(130);
     })
 })
