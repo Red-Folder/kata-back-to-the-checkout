@@ -4,6 +4,10 @@ const pricingRules = [
     { 
         item: "A",
         unitPrice: 50
+    },
+    {
+        item: "B",
+        unitPrice: 30
     }
 ];
 
@@ -16,5 +20,11 @@ describe("Checkout will return", () => {
         const checkout = new Checkout(pricingRules);
         checkout.scan("A");
         expect(checkout.total()).toBe(50);
+    })
+    it("80 for 'AB'", () => {
+        const checkout = new Checkout(pricingRules);
+        checkout.scan("A");
+        checkout.scan("B");
+        expect(checkout.total()).toBe(80);
     })
 })
