@@ -8,6 +8,14 @@ const pricingRules = [
     {
         item: "B",
         unitPrice: 30
+    },
+    {
+        item: "C",
+        unitPrice: 20
+    },
+    {
+        item: "D",
+        unitPrice: 15
     }
 ];
 
@@ -26,5 +34,13 @@ describe("Checkout will return", () => {
         checkout.scan("A");
         checkout.scan("B");
         expect(checkout.total()).toBe(80);
+    })
+    it("115 for 'CDBA'", () => {
+        const checkout = new Checkout(pricingRules);
+        checkout.scan("C");
+        checkout.scan("D");
+        checkout.scan("B");
+        checkout.scan("A");
+        expect(checkout.total()).toBe(115);
     })
 })
