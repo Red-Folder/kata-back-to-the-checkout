@@ -1,0 +1,11 @@
+{
+  "name": "back-to-checkout",
+  "version": "1.0.0",
+  "description": "Kata for http://codekata.com/kata/kata09-back-to-the-checkout/",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "Mark Taylor, Red Folder Consultancy Ltd",
+  "license": "Apache-2.0"
+}
