@@ -11,7 +11,11 @@ const pricingRules = [
     },
     {
         item: "B",
-        unitPrice: 30
+        unitPrice: 30,
+        special: {
+            quantity: 2,
+            specialPrice: 45
+        }
     },
     {
         item: "C",
@@ -60,5 +64,16 @@ describe("Checkout will return", () => {
         checkout.scan("A");
         checkout.scan("A");
         expect(checkout.total()).toBe(130);
+    })
+
+    it("190 for 'DABABA'", () => {
+        const checkout = new Checkout(pricingRules);
+        checkout.scan("D");
+        checkout.scan("A");
+        checkout.scan("B");
+        checkout.scan("A");
+        checkout.scan("B");
+        checkout.scan("A");
+        expect(checkout.total()).toBe(190);
     })
 })
